@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,19 +57,19 @@ public class Profile {
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Summary> summary;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profile")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "profile", fetch = FetchType.EAGER)
 	private Skills skills;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "eprofile")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "eprofile", fetch = FetchType.EAGER)
 	private List<EducationDetails> educationDetails;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<ProjectDetails> projectDetails;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="achievement_id")
+	@JoinColumn(name = "achievement_id")
 	private AchievementDetails achievementDetails;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private MyUser myUser;
 }

@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileNewDto {
+	private int profileId;
 
+	private String totalExperience;
 
-	String totalExperience;
-
-	String relevantExperience;
+	private String relevantExperience;
 
 
 	private Skills skills;

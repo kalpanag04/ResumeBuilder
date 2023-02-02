@@ -2,6 +2,9 @@ package com.te.resumebuilder.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -98,6 +101,7 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	@Transactional
 	public ProfileDto deleteResumeById(Integer profileId) {
 		if (profileId == 0) {
 			System.out.println("give proper id");
