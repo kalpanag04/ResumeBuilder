@@ -11,4 +11,8 @@ public interface ProfileService {
 
 	Profile updateResume(ProfileNewDto profileNewDto, Integer profileId);
 
+	ProfileDto getResumeById(Integer profileId);
+
+	ProfileDto deleteResumeById(Integer profileId);
+
 }

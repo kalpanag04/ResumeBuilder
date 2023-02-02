@@ -85,10 +85,31 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public Profile updateResume(ProfileNewDto profileNewDto, Integer profileId) {
-		Profile profile=profileRepository.findById(profileId).get();
-		
+		Profile profile = profileRepository.findById(profileId).get();
 		BeanUtils.copyProperties(profileNewDto, profile);
 		return profileRepository.save(profile);
+	}
+
+	@Override
+	public ProfileDto getResumeById(Integer profileId) {
+		ProfileDto profileDto = new ProfileDto();
+		Profile profile = profileRepository.findById(profileId).get();
+		BeanUtils.copyProperties(profile, profileDto);
+		return profileDto;
+	}
+
+	@Override
+	public ProfileDto deleteResumeById(Integer profileId) {
+		if (profileId == 0) {
+			System.out.println("give proper id");
+			return null;
+		} else {
+			Profile profile = profileRepository.findById(profileId).get();
+			ProfileDto profileDto = new ProfileDto();
+			BeanUtils.copyProperties(profile, profileDto);
+			profileRepository.deleteById(profileId);
+			return profileDto;
+		}
 	}
 
 }
