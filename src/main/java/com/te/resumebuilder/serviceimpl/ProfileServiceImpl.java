@@ -9,7 +9,6 @@ import com.te.resumebuilder.dto.EducationDetailsDto;
 import com.te.resumebuilder.dto.ProfileDto;
 import com.te.resumebuilder.dto.ProfileNewDto;
 import com.te.resumebuilder.dto.ProjectDetailsDto;
-import com.te.resumebuilder.dto.SkillsDto;
 import com.te.resumebuilder.dto.SummaryDto;
 import com.te.resumebuilder.entity.AchievementDetails;
 import com.te.resumebuilder.entity.EducationDetails;
@@ -45,7 +44,6 @@ public class ProfileServiceImpl implements ProfileService {
 
 		// Skill Details
 		Skills skills = new Skills();
-		SkillsDto skillsDto = new SkillsDto();
 		BeanUtils.copyProperties(profileDto.getSkillsDto(), skills);
 		skills.setProfile(profile);
 		profile.setSkills(skills);
@@ -53,7 +51,6 @@ public class ProfileServiceImpl implements ProfileService {
 		// Achievement Details
 		AchievementDetails achievementDetails = new AchievementDetails();
 		BeanUtils.copyProperties(profileDto.getAchievementDetailsDto(), achievementDetails);
-		// achievementDetailsRepository.save(achievementDetails);
 		profile.setAchievementDetails(achievementDetails);
 
 		// Education Details

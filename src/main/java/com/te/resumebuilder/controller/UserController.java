@@ -10,18 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.te.resumebuilder.dto.ProfileDto;
 import com.te.resumebuilder.dto.ProfileNewDto;
 import com.te.resumebuilder.entity.Profile;
 import com.te.resumebuilder.response.AppResponse;
-import com.te.resumebuilder.service.AchievementDetailsService;
-import com.te.resumebuilder.service.EducationDetailsService;
 import com.te.resumebuilder.service.ProfileService;
-import com.te.resumebuilder.service.ProjectDetailsService;
-import com.te.resumebuilder.service.SkillsService;
-import com.te.resumebuilder.service.SummaryService;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -90,7 +83,7 @@ public class UserController {
 			appResponse.setData(profileDto);
 
 			return new ResponseEntity<AppResponse>(appResponse, HttpStatus.OK);
-
+			
 		} else {
 			appResponse.setError(true);
 			appResponse.setMessage("Resumuse not present with this id");
@@ -98,7 +91,6 @@ public class UserController {
 			appResponse.setData(profileDto);
 
 			return new ResponseEntity<AppResponse>(HttpStatus.BAD_REQUEST);
-
 		}
 	}
 
@@ -121,7 +113,6 @@ public class UserController {
 			appResponse.setData(profileDto);
 
 			return new ResponseEntity<AppResponse>(HttpStatus.BAD_REQUEST);
-
 		}
 	}
 }
