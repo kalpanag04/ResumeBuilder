@@ -16,6 +16,7 @@ import com.te.resumebuilder.entity.Profile;
 import com.te.resumebuilder.entity.ProjectDetails;
 import com.te.resumebuilder.entity.Skills;
 import com.te.resumebuilder.entity.Summary;
+import com.te.resumebuilder.exception.ResumeProfileIdNotFoundException;
 import com.te.resumebuilder.repository.ProfileRepository;
 import com.te.resumebuilder.service.ProfileService;
 
@@ -90,7 +91,8 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public ProfileDto getResumeById(Integer profileId) {
 		ProfileDto profileDto = new ProfileDto();
-		Profile profile = profileRepository.findById(profileId).get();
+		Profile profile = profileRepository.findById(profileId)
+				.orElseThrow(() -> new ResumeProfileIdNotFoundException("resume profile Id not found"));
 		BeanUtils.copyProperties(profile, profileDto);
 		return profileDto;
 	}
