@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,7 +97,8 @@ public class ProfileServiceImpl implements ProfileService {
 		ProfileDto profileDto = new ProfileDto();
 		Profile profile = profileRepository.findById(profileId)
 				.orElseThrow(() -> new ResumeProfileIdNotFoundException("resume profile Id not found"));
-		BeanUtils.copyProperties(profile, profileDto);
+		ModelMapper modelMapper=new ModelMapper();
+		modelMapper.map(profile,profileDto);
 		return profileDto;
 	}
 
